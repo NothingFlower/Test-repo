@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, #10152f, #38246d 55%, #176b87);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 410px;
+      padding: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #8b5cf6, #38bdf8);
+      font-size: 28px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #d7d7ed;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      outline: none;
+      color: #fff;
+      background: rgba(12, 15, 40, 0.35);
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input::placeholder {
+      color: #c4c5da;
+    }
+
+    input:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+
+    .password-wrap {
+      position: relative;
+    }
+
+    .password-wrap input {
+      padding-right: 68px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      border: 0;
+      color: #cbd5e1;
+      background: transparent;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 4px 0 22px;
+      font-size: 12px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #e0e3f4;
+    }
+
+    a {
+      color: #b9a3ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 10px;
+      color: #fff;
+      background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .login-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .login-button:active {
+      transform: translateY(0);
+    }
+
+    .message {
+      min-height: 18px;
+      margin-top: 14px;
+      text-align: center;
+      color: #fde68a;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .signup {
+      margin-top: 22px;
+      text-align: center;
+      color: #d7d7ed;
+      font-size: 13px;
+    }
+
+    @media (max-width: 440px) {
+      .login-card {
+        padding: 28px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="login-card">
+    <div class="logo" aria-hidden="true">✦</div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Please sign in to continue</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="username">Username or Email</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your username or email"
+          autocomplete="username"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+          <button class="toggle-password" type="button" id="togglePassword"
+            aria-label="Show password">SHOW</button>
+        </div>
+      </div>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox" name="remember">
+          Remember me
+        </label>
+        <a href="#" id="forgotLink">Forgot password?</a>
+      </div>
+
+      <button class="login-button" type="submit">Login</button>
+      <p class="message" id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="signup">Don't have an account? <a href="#" id="signupLink">Sign up</a></p>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    const loginForm = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    togglePassword.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+      passwordInput.type = isHidden ? "text" : "password";
+      togglePassword.textContent = isHidden ? "HIDE" : "SHOW";
+      togglePassword.setAttribute(
+        "aria-label",
+        isHidden ? "Hide password" : "Show password"
+      );
+    });
+
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      message.textContent =
+        "Demo only: connect this form to a secure authentication backend to log in.";
+    });
+
+    document.getElementById("forgotLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      message.textContent = "Password reset is not connected in this demo yet.";
+    });
+
+    document.getElementById("signupLink").addEventListener("click", (event) => {
+      event.preventDefault();
+      message.textContent = "Sign-up is not connected in this demo yet.";
+    });
+  </script>
+</body>
+</html>
